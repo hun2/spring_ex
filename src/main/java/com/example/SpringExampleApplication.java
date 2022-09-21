@@ -1,11 +1,23 @@
 package com.example;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import javax.sql.DataSource;
 
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+
+
+
+
+
+
+
+@MapperScan(basePackages = "com.example.*")  // ★ 엄청 중요한 어노테이션 mapper scan 추가!!!★
 @SpringBootApplication
 public class SpringExampleApplication {
 
@@ -13,6 +25,21 @@ public class SpringExampleApplication {
 		SpringApplication.run(SpringExampleApplication.class, args);
 	}
 
+	
+	
+	// sessionFactory 라는 bean 을 spring bean 으로 만든다.
+	 @Bean
+	    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+	        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+	        sessionFactory.setDataSource(dataSource);
+
+	        Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*Mapper.xml");
+	        sessionFactory.setMapperLocations(res);
+
+	        return sessionFactory.getObject();
+	    }
+	
+	
 }
 
 

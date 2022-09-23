@@ -34,7 +34,7 @@ public class Lesson03Ex01RestController {
 	
 	//위에와 다른 방식이긴 하지만 똑같다고 보면 됨.  ( 필수 파라미터일때)
 	//요청 url : http://localhost/lesson03/ex03
-	@RequestMapping("/lesson03/ex03")
+	@RequestMapping("/lesson03/03")
 	public Review ex03(
 			@RequestParam(value="id", required=true) int id // 필수 파라미터
 	) {

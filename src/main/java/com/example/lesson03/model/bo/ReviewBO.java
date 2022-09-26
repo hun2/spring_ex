@@ -40,4 +40,14 @@ public class ReviewBO {
 	public int updateReviewById(int id, String review) {
 		return reviewDao.updateReviewById(id, review);
 	}
+	
+	
+	
+	
+	// 삭제 => 성공 갯수 유무를 출력받을거면 int / 안받을거면 void
+	
+	public void deleteReviewById(int id) {
+		reviewDao.deleteReviewById(id);
+	}
+	
 }

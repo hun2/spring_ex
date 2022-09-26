@@ -28,6 +28,10 @@ public interface ReviewDAO {
 			@Param("review") String review);
 	
 	
+	
+	public void deleteReviewById(int id);
+	
+	
 }
 
 

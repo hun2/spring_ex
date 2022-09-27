@@ -29,7 +29,7 @@
  	</insert>
  
  
- 	<select id="selectLastUser" resultType="com.example.lesson04.model.User">
+ 	<select id="getStudentById" resultType="com.example.lesson04.model.User">
  		SELECT
  			`ID`
  			,`name`

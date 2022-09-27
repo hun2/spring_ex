@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.lesson04.dao.UserDAO;
+import com.example.lesson04.model.Student;
 import com.example.lesson04.model.User;
 
 @Service
@@ -25,4 +26,8 @@ public class UserBO {
 	public User getLastUser() {
 		return userDao.selectLastUser();
 	}
+	
+	
+	
+	
 }

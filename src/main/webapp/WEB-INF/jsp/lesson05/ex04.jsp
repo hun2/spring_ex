@@ -50,6 +50,25 @@
 	
 	
 	
+	<h1>7. 시작 인덱스 종료 인덱스 까지 구하기(substring)</h1>
+	<%-- str2에서 love 추출 --%>
+	${fn:substring(str2, 2, 6)}
+
+
+	<h1>8. 모두 소문자로 변경 (toLowerCase)</h1>
+	${fn:toLowerCase(str2)}
+	
+	<h1>9. 모두 대문자로 변경 (toUpperCase)</h1>
+	${fn:toUpperCase(str2)}
+	
+	<h1>10. 앞 뒤 공백 제거 (trim)</h1>	
+	
+	<c:set var="str3" value="         hello         " />
+	<pre>str3 : ${str3}</pre> <%-- 공백이 고대로 출력됨. --%>
+	<pre>str3 : ${fn:trim(str3)} </pre>
+	
+	
+	
 	
 </body>
 </html>

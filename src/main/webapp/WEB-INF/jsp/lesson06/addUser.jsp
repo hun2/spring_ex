@@ -101,13 +101,13 @@
 			e.preventDefault();
 			
 			//valdation (유효성검사)
-			var name = $('#name').val().trim();			
+			const name = $('#name').val().trim();			
 			if (name.length < 1) {
 				alert("이름을 입력하세요");
 				return ;
 			} 
 			
-			var yyyymmdd =  $('#yyyymmdd').val().trim();
+			const yyyymmdd =  $('#yyyymmdd').val().trim();
 			if (yyyymmdd == "") {
 				alert("생년월일 입력하세요");
 				return ;
@@ -119,11 +119,13 @@
 				
 			}
 			
-			var email = $('#email').val().trim();
+			const email = $('#email').val().trim();
 			if (email == "") {
 				alert("이메일을 입력하세요");
 				return ;
 			}
+			
+			const introduce = $('#introduce').val();
 			
 			
 			
@@ -132,14 +134,21 @@
 			
 			$.ajax({
 				//request	
-				type:"post"         // method 방식
+				type:"POST"         // method 방식
 				, url : "/lesson06/ex01/add_user"    // 요청주소
 				, data :{"name": name, "yyyymmdd" : yyyymmdd, "email" : email, "introduce" : introduce}
 				
 				
 				//response
 				, success: function(data){
-					alert(data);
+					//alert(data);
+					if (data == "success") {
+						location.href="/lesson06/ex01/get_user_view";
+					}
+						
+				}
+				, complete : function(data) {
+					alert("완료");
 				}
 				, error : function(e) {
 					alert("에러" + e);

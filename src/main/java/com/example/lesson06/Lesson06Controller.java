@@ -1,7 +1,11 @@
 package com.example.lesson06;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,5 +51,42 @@ public class Lesson06Controller {
 		
 		return "lesson06/getUser";
 	}
+	
+	
+	
+	//------------------------ex02 회원가입 관련 page 제작
+	
+	@RequestMapping("/lesson06/ex02/add_name_view")
+	public String ex02() {
+		
+		
+		return "lesson06/addName";
+	}
+	
+	
+	@ResponseBody
+	@GetMapping("/lesson06/ex02/is_duplication")
+	public Map<String, Boolean> ex02_1(@RequestParam("name") String name) {
+		
+		//select 
+		
+		
+		//결과
+		Map<String , Boolean> result = new HashMap<>();
+		// true 면 중복  false 면 중복아님.
+		boolean isDuplication = usersBo.existUserByName(name);
+		result.put("isduplication", isDuplication);
+		
+		
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
 	
 }

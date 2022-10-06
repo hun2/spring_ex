@@ -29,5 +29,14 @@
  	
  	</insert>
  	
- 
+ 	<select id="existUserByName" parameterType="String" resultType="boolean">
+ 	
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			new_user
+ 		WHERE
+ 			name = #{name}
+ 	
+ 	</select>
  </mapper>

@@ -14,4 +14,6 @@ public interface UsersDAO {
 			@Param("introduce") String introduce);
 	
 	
+	public boolean existUserByName(String name);
+	
 }
